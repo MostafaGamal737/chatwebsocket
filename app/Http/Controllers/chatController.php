@@ -5,6 +5,7 @@ use App\message;
 use App\user;
 use Auth;
 use App\Events\sendMessageEvent;
+use App\Events\onlineEvent;
 
 use Illuminate\Http\Request;
 class chatController extends Controller
@@ -15,6 +16,7 @@ class chatController extends Controller
     }
     public function index()
     {
+      broadcast(new onlineEvent(Auth::user()))->toOthers();
       return view ('chat');
     }
     public function sendmessages(Request $M)

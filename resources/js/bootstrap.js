@@ -43,7 +43,8 @@ window.Echo = new Echo({
   //enabledTransports: ["ws", "wss"],
 });
 
-window.Echo.channel('myChannel')
-.listen('WebSocketEvent',(e)=>{
+window.Echo.channel('online')
+.listen('onlineEvent',(e)=>{
+  console.log('online event working');
   console.log(e.data);
 });

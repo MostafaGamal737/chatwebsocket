@@ -11,19 +11,20 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
 
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
-use App\message;
-class sendMessageEvent implements ShouldBroadcastNow
+use App\user;
+
+class onlineEvent implements ShouldBroadcastNow
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
-      public $message;
+    public $user;
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($message)
+    public function __construct($user)
     {
-        $this->message=$message;
+        $this->user=$user;
     }
 
     /**
